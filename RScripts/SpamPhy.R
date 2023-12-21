@@ -84,6 +84,7 @@ SpamData = function(rname){
   return(dd)
 }
 
+
 #rname=Grid_shape(source_folder)
 # Convert the 'File' dataframe to a spatial dataframe using 'st_as_sf'
 dd_sf <- st_as_sf(SpamData(Grid_shape(source_folder)))
@@ -95,14 +96,14 @@ tmap_mode("plot")
 dd_sf <- st_make_valid(dd_sf)
 
 # Création du tracé avec l'objet spatial corrigé
-p2 <- tm_shape(dd_sf_valid) +
+p2 <- tm_shape(dd_sf) +
   tm_polygons(col = "PhysicalA", title = "Mask ", style = "quantile", palette = "Greens") +
   tm_layout(legend.outside = FALSE)
 
 # Affichage du tracé
 p2
 
-n_intervals <- 5  # Définir le nombre d'intervalles souhaités
+n_intervals <- 10  # Définir le nombre d'intervalles souhaités
 col_name <- "PhysicalA"  # Remplacez par le nom de votre colonne à colorier
 
 # Créer la carte en utilisant le style "pretty"
